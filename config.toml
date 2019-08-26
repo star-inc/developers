@@ -21,8 +21,11 @@ pygmentCodeFences = true
   comments = true
 
 [Author]
-  name = "Star Inc."
+  name = "OpenSource Zone"
+  url = "https://opensource.starinc.xyz"
   github = "star-inc"
+  copyright = "Copyright(c) 2019 Star Inc.All Rights Reserved."
+  copyright_url = "https://starinc.xyz"
 
 
 [[menu.main]]
@@ -33,12 +36,35 @@ pygmentCodeFences = true
 [[menu.main]]
     name = "Star Inc. Global"
     url = "https://starinc.xyz/global/"
+    weight = 5
+
+[[menu.main]]
+    identifier = "software"
+    name = "Software"
+    weight = 2
+
+[[menu.main]]
+    parent = "software"
+    name = "Rita"
+    url = "software/rita"
+    weight = 1
+
+[[menu.main]]
+    parent = "software"
+    name = "LUPS"
+    url = "software/lups"
+    weight = 2
+
+[[menu.main]]
+    parent = "software"
+    name = "Star Yuuki BOT"
+    url = "software/syb"
     weight = 3
 
 [[menu.main]]
     identifier = "restapi"
     name = "RESTAPI"
-    weight = 2
+    weight = 3
 
 [[menu.main]]
     parent = "restapi"
