@@ -1,6 +1,6 @@
 ---
 title: RESTAPI
-subtitle: Code Sample
+subtitle: SDK
 comments: false
 ---
 

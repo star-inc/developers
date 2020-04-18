@@ -2,7 +2,7 @@ baseurl = "https://developer.starinc.xyz/"
 contentdir    = "content"
 layoutdir     = "layouts"
 publishdir    = "public"
-title = "Developer  Documents"
+title = "Developer"
 canonifyurls  = true
 
 DefaultContentLanguage = "en"
@@ -21,10 +21,10 @@ pygmentCodeFences = true
   comments = true
 
 [Author]
-  name = "OpenSource Zone"
+  name = "OSS Zone"
   url = "https://opensource.starinc.xyz"
   github = "star-inc"
-  copyright = "Copyright(c) 2019 Star Inc.All Rights Reserved."
+  copyright = "Copyright(c) 2020 Star Inc.All Rights Reserved."
   copyright_url = "https://starinc.xyz"
 
 
@@ -46,7 +46,7 @@ pygmentCodeFences = true
 [[menu.main]]
     parent = "software"
     name = "Rita"
-    url = "software/rita"
+    url = "software/research/rita"
     weight = 1
 
 [[menu.main]]
@@ -58,7 +58,7 @@ pygmentCodeFences = true
 [[menu.main]]
     parent = "software"
     name = "Star Yuuki BOT"
-    url = "software/syb"
+    url = "software/star_yuuki_bot"
     weight = 3
 
 [[menu.main]]
@@ -71,15 +71,3 @@ pygmentCodeFences = true
     name = "Service"
     url = "restapi/service"
     weight = 1
-
-[[menu.main]]
-    parent = "restapi"
-    name = "SDK"
-    url = "restapi/sdk"
-    weight = 2
-
-[[menu.main]]
-    parent = "restapi"
-    name = "Code Sample"
-    url = "restapi/sample"
-    weight = 3
