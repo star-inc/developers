@@ -16,14 +16,15 @@
   <hr />
   <hr />
   {{if .Prev}}
-    <span class="left">
-    &nbsp; <em>&laquo; Previous:</em> <a class="next" href="{{.Prev.Permalink}}">{{.Prev.Title}}</a>
-    </span>
-  {{end}}
-
-  {{if .Next}}
-    <span class="right">
-    <em>Next: </em><a class="next" href="{{.Next.Permalink}}"> &nbsp; {{ .Next.Title }}</a> &raquo;
-    </span>
+  <span class="left">
+    &nbsp; <em>&laquo; Previous:</em>
+    <a class="next" href="{{.Prev.Permalink}}">{{.Prev.Title}}</a>
+  </span>
+  {{end}} {{if .Next}}
+  <span class="right">
+    <em>Next: </em
+    ><a class="next" href="{{.Next.Permalink}}"> &nbsp; {{ .Next.Title }}</a>
+    &raquo;
+  </span>
   {{end}}
 </div>

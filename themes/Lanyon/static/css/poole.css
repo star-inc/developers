@@ -13,7 +13,6 @@
  * https://github.com/poole/poole.
  */
 
-
 /*
  * Contents
  *
@@ -27,7 +26,6 @@
  * Themes
  */
 
-
 /*
  * Body resets
  *
@@ -36,8 +34,8 @@
 
 * {
   -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 html,
@@ -61,7 +59,7 @@ body {
   color: #515151;
   background-color: #fff;
   -webkit-text-size-adjust: 100%;
-      -ms-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
 }
 
 /* No `:visited` state is required by default (browsers will use `a`) */
@@ -76,8 +74,13 @@ a:focus {
 }
 
 /* Headings */
-h1, h2, h3, h4, h5, h6 {
-  margin-bottom: .5rem;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-bottom: 0.5rem;
   font-weight: bold;
   line-height: 1.25;
   color: #313131;
@@ -94,8 +97,11 @@ h3 {
   margin-top: 1.5rem;
   font-size: 1.25rem;
 }
-h4, h5, h6 {
-  font-family: "ff-meta-web-pro", "Helvetica Neue", "Helvetica", Arial, sans-serif;  
+h4,
+h5,
+h6 {
+  font-family: "ff-meta-web-pro", "Helvetica Neue", "Helvetica", Arial,
+    sans-serif;
   margin-top: 1rem;
   font-size: 1rem;
 }
@@ -111,20 +117,20 @@ strong {
 }
 
 /* Lists */
-ul, ol, dl {
+ul,
+ol,
+dl {
   margin-top: 0;
   padding-left: 0;
   margin-bottom: 1rem;
   list-style-type: none;
 }
 
-
-
 dt {
   font-weight: bold;
 }
 dd {
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
 }
 
 /* Misc */
@@ -147,11 +153,15 @@ abbr[title] {
   border-bottom: 1px dotted #e5e5e5;
 }
 
-
-mono, tt, code, pre {
-  font-family: PragmataPro, Menlo, Monaco, "Andale Mono", "Lucida Console", "Courier New", monospace }
+mono,
+tt,
+code,
+pre {
+  font-family: PragmataPro, Menlo, Monaco, "Andale Mono", "Lucida Console",
+    "Courier New", monospace;
+}
 code {
-  padding: .25em .5em;
+  padding: 0.25em 0.5em;
   font-size: 85%;
   color: #bf616a;
   background-color: #f9f9f9;
@@ -162,7 +172,7 @@ pre {
   margin-top: 0;
   margin-bottom: 1rem;
   padding: 1rem;
-  font-size: .8rem;
+  font-size: 0.8rem;
   line-height: 1.4;
   white-space: pre;
   overflow: auto;
@@ -184,10 +194,10 @@ pre code {
 
 /* Quotes */
 blockquote {
-  padding: .5rem 1rem;
-  margin: .8rem 0;
+  padding: 0.5rem 1rem;
+  margin: 0.8rem 0;
   color: #7a7a7a;
-  border-left: .25rem solid #e5e5e5;
+  border-left: 0.25rem solid #e5e5e5;
 }
 blockquote p:last-child {
   margin-bottom: 0;
@@ -204,11 +214,11 @@ img {
   margin: 0 0 1rem;
   border-radius: 5px;
   height: auto;
-  width:100%;
+  width: 100%;
 }
 
 .fpimg {
- padding-bottom: 2rem;
+  padding-bottom: 2rem;
 }
 
 .lbg {
@@ -217,19 +227,18 @@ img {
   padding-left: 1rem;
 }
 
-
 .right {
-    float: right;
-    margin-left: 1rem;
+  float: right;
+  margin-left: 1rem;
 }
 
 .left {
-    float: left;
-    margin-right: 1rem;
+  float: left;
+  margin-right: 1rem;
 }
 
-.center { 
-    float: center;
+.center {
+  float: center;
 }
 
 /* Tables */
@@ -242,14 +251,13 @@ table {
 }
 td,
 th {
-  padding: .25rem .5rem;
+  padding: 0.25rem 0.5rem;
   /* border: 1px solid #e5e5e5; */
 }
 tbody tr:nth-child(odd) td,
 tbody tr:nth-child(odd) th {
   background-color: #f9f9f9;
 }
-
 
 /*
  * Custom type
@@ -271,34 +279,47 @@ tbody tr:nth-child(odd) th {
   font-size: small;
 }
 
+ul.category {
+  text-transform: capitalize;
+}
+ul.category li {
+  margin-bottom: 1rem;
+}
 
-ul.category {text-transform: capitalize;}
-ul.category li {margin-bottom: 1rem;}
-
-ul.catlist { list-style: none; margin: 0; padding: 0; }
-ul.catlist li { display: inline; }
-ul.catlist li:after { content: "・"; }
-ul.catlist li:last-child:after { content: ""; }
+ul.catlist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+ul.catlist li {
+  display: inline;
+}
+ul.catlist li:after {
+  content: "・";
+}
+ul.catlist li:last-child:after {
+  content: "";
+}
 
 /* This gets Google to fall into place */
 .social {
-	font-size: 1px;
-        padding-bottom: 2rem;
-        padding-top: 0;
+  font-size: 1px;
+  padding-bottom: 2rem;
+  padding-top: 0;
 }
- 
+
 /* From https://gist.github.com/thebigreason/1296097 */
 /* This gets Facebook to fall into place */
 .social iframe {
-	vertical-align: bottom;
+  vertical-align: bottom;
 }
- 
+
 /* Set an optional width for your button wrappers */
 .social span {
-	display: inline-block;
-	width: 110px;
+  display: inline-block;
+  width: 110px;
 }
- 
+
 /*
  * Messages
  *
@@ -313,7 +334,6 @@ ul.catlist li:last-child:after { content: ""; }
   background-color: #f9f9f9;
 }
 
-
 /*
  * Container
  *
@@ -322,12 +342,11 @@ ul.catlist li:last-child:after { content: ""; }
 
 .container {
   max-width: 38rem;
-  padding-left:  1rem;
+  padding-left: 1rem;
   padding-right: 1rem;
-  margin-left:  auto;
+  margin-left: auto;
   margin-right: auto;
 }
-
 
 /*
  * Masthead
@@ -336,7 +355,7 @@ ul.catlist li:last-child:after { content: ""; }
  */
 
 .masthead {
-  padding-top:    1rem;
+  padding-top: 1rem;
   padding-bottom: 1rem;
   margin-bottom: 3rem;
 }
@@ -354,7 +373,6 @@ ul.catlist li:last-child:after { content: ""; }
   color: #c0c0c0;
   letter-spacing: 0;
 }
-
 
 /*
  * Posts and pages
@@ -382,7 +400,7 @@ ul.catlist li:last-child:after { content: ""; }
 /* Meta data line below post title */
 .post-date {
   display: block;
-  margin-top: -.5rem;
+  margin-top: -0.5rem;
   margin-bottom: 1rem;
   color: #9a9a9a;
 }
@@ -390,7 +408,6 @@ ul.catlist li:last-child:after { content: ""; }
 /* Archive list */
 
 .archive h3 {
-    margin-top:0;
-    padding-bottom: 0;
+  margin-top: 0;
+  padding-bottom: 0;
 }
-
