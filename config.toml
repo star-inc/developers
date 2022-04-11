@@ -1,12 +1,11 @@
-baseurl = "https://developer.starinc.xyz/"
+baseurl = "https://documents.starinc.xyz/"
 contentdir    = "content"
 layoutdir     = "layouts"
 publishdir    = "public"
-title = "Developer"
+title = "Public Documentation"
 canonifyurls  = true
 
 DefaultContentLanguage = "en"
-theme = "beautifulhugo"
 metaDataFormat = "yaml"
 pygmentsUseClasses = true
 pygmentCodeFences = true
@@ -14,7 +13,7 @@ pygmentCodeFences = true
 [Params]
   subtitle = "Powered by Star Inc."
   logo = "https://startw.cf/assets/images/logos/groups/star.jpg"
-  favicon = "https://starinc.xyz/assets/images/icon.ico"
+  favicon = "https://starinc.xyz/favicon.ico"
   dateFormat = "January 2, 2006"
   commit = false
   rss = false
@@ -24,7 +23,7 @@ pygmentCodeFences = true
   name = "OSS Zone"
   url = "https://opensource.starinc.xyz"
   github = "star-inc"
-  copyright = "Copyright(c) 2020 Star Inc.All Rights Reserved."
+  copyright = "Copyright(c) 2022 Star Inc.All Rights Reserved."
   copyright_url = "https://starinc.xyz"
 
 
@@ -34,40 +33,17 @@ pygmentCodeFences = true
     weight = 1
 
 [[menu.main]]
-    name = "Star Inc. Global"
+    name = "Star Inc."
     url = "https://starinc.xyz/global/"
     weight = 5
 
 [[menu.main]]
-    identifier = "software"
-    name = "Software"
-    weight = 2
-
-[[menu.main]]
-    parent = "software"
-    name = "Rita"
-    url = "software/research/rita"
-    weight = 1
-
-[[menu.main]]
-    parent = "software"
-    name = "LUPS"
-    url = "software/lups"
-    weight = 2
-
-[[menu.main]]
-    parent = "software"
-    name = "Star Yuuki BOT"
-    url = "software/star_yuuki_bot"
-    weight = 3
-
-[[menu.main]]
     identifier = "restapi"
-    name = "RESTAPI"
+    name = "RESTful API"
     weight = 3
 
 [[menu.main]]
     parent = "restapi"
-    name = "Service"
-    url = "restapi/service"
+    name = "Basic API"
+    url = "restapi/basic"
     weight = 1
