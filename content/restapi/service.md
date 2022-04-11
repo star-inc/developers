@@ -1,7 +1,11 @@
 ---
-title: RESTAPI
-subtitle: Support Services
+title: Basic API
+subtitle: Public Resource RESTful API
 comments: false
 ---
 
-- Star  
+https://restapi.starinc.xyz/basic
+
+time/clock
+network/ip
+network/ip/geo
