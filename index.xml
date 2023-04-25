@@ -1,2 +1,692 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Public Documentation</title><link>https://documents.starinc.xyz/</link><description>Recent content on Public Documentation</description><generator>Hugo -- gohugo.io</generator><atom:link href="https://documents.starinc.xyz/index.xml" rel="self" type="application/rss+xml"/><item><title>Basic API</title><link>https://documents.starinc.xyz/restapi/basic/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://documents.starinc.xyz/restapi/basic/</guid><description>https://restapi.starinc.xyz/basic
-time/clock network/ip network/ip/geo</description></item></channel></rss>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Public Documentation</title><link>https://documents.starinc.xyz/</link><language>en-us</language><author/><rights>(C) 1</rights><updated>0001-01-01 00:00:00 +0000 UTC</updated><item><title>Basic API</title><link>https://documents.starinc.xyz/docs/restapi/basic/</link><pubDate>Mon, 01 Jan 0001 00:00:00 UTC</pubDate><author/><guid>https://documents.starinc.xyz/docs/restapi/basic/</guid><description>&lt;h2 id="create-beautiful-rest-api-docs-authored-in-markdown">Create beautiful REST API docs authored in Markdown&lt;/h2>
+&lt;ul>
+&lt;li>Adopted from: &lt;a href="https://stubby4j.com/docs/admin_portal.html">https://stubby4j.com/docs/admin_portal.html&lt;/a>&lt;/li>
+&lt;li>Inspired by Swagger API docs style &amp;amp; structure: &lt;a href="https://petstore.swagger.io/#/pet">https://petstore.swagger.io/#/pet&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h4 id="creating-newoverwriting-existing-stubs--proxy-configs">Creating new/overwriting existing stubs &amp;amp; proxy configs&lt;/h4>
+&lt;details>
+&lt;summary>&lt;code>POST&lt;/code> &lt;code>&lt;b>/&lt;/b>&lt;/code> &lt;code>(overwrites all in-memory stub and/or proxy-config)&lt;/code>&lt;/summary>
+&lt;h5 id="parameters">Parameters&lt;/h5>
+&lt;blockquote>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>name&lt;/th>
+&lt;th>type&lt;/th>
+&lt;th>data type&lt;/th>
+&lt;th>description&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>None&lt;/td>
+&lt;td>required&lt;/td>
+&lt;td>object (JSON or YAML)&lt;/td>
+&lt;td>N/A&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;/blockquote>
+&lt;h5 id="responses">Responses&lt;/h5>
+&lt;blockquote>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>http code&lt;/th>
+&lt;th>content-type&lt;/th>
+&lt;th>response&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>201&lt;/code>&lt;/td>
+&lt;td>&lt;code>text/plain;charset=UTF-8&lt;/code>&lt;/td>
+&lt;td>&lt;code>Configuration created successfully&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>400&lt;/code>&lt;/td>
+&lt;td>&lt;code>application/json&lt;/code>&lt;/td>
+&lt;td>&lt;code>{&amp;quot;code&amp;quot;:&amp;quot;400&amp;quot;,&amp;quot;message&amp;quot;:&amp;quot;Bad Request&amp;quot;}&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>405&lt;/code>&lt;/td>
+&lt;td>&lt;code>text/html;charset=utf-8&lt;/code>&lt;/td>
+&lt;td>None&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;/blockquote>
+&lt;h5 id="example-curl">Example cURL&lt;/h5>
+&lt;blockquote>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-javascript" data-lang="javascript">&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">curl&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="nx">X&lt;/span> &lt;span class="nx">POST&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="nx">H&lt;/span> &lt;span class="s2">&amp;#34;Content-Type: application/json&amp;#34;&lt;/span> &lt;span class="o">--&lt;/span>&lt;span class="nx">data&lt;/span> &lt;span class="err">@&lt;/span>&lt;span class="nx">post&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">json&lt;/span> &lt;span class="nx">http&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="c1">//localhost:8889/
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/blockquote>
+&lt;/details>
+&lt;hr>
+&lt;h4 id="listing-existing-stubs--proxy-configs-as-yaml-string">Listing existing stubs &amp;amp; proxy configs as YAML string&lt;/h4>
+&lt;details>
+&lt;summary>&lt;code>GET&lt;/code> &lt;code>&lt;b>/&lt;/b>&lt;/code> &lt;code>(gets all in-memory stub &amp; proxy configs)&lt;/code>&lt;/summary>
+&lt;h5 id="parameters-1">Parameters&lt;/h5>
+&lt;blockquote>
+&lt;p>None&lt;/p>
+&lt;/blockquote>
+&lt;h5 id="responses-1">Responses&lt;/h5>
+&lt;blockquote>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>http code&lt;/th>
+&lt;th>content-type&lt;/th>
+&lt;th>response&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>200&lt;/code>&lt;/td>
+&lt;td>&lt;code>text/plain;charset=UTF-8&lt;/code>&lt;/td>
+&lt;td>YAML string&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;/blockquote>
+&lt;h5 id="example-curl-1">Example cURL&lt;/h5>
+&lt;blockquote>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-javascript" data-lang="javascript">&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">curl&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="nx">X&lt;/span> &lt;span class="nx">GET&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="nx">H&lt;/span> &lt;span class="s2">&amp;#34;Content-Type: application/json&amp;#34;&lt;/span> &lt;span class="nx">http&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="c1">//localhost:8889/
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/blockquote>
+&lt;/details>
+&lt;details>
+&lt;summary>&lt;code>GET&lt;/code> &lt;code>&lt;b>/{stub_numeric_id}&lt;/b>&lt;/code> &lt;code>(gets stub by its resource-id-{stub_numeric_id} in the YAML config)&lt;/code>&lt;/summary>
+&lt;h5 id="parameters-2">Parameters&lt;/h5>
+&lt;blockquote>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>name&lt;/th>
+&lt;th>type&lt;/th>
+&lt;th>data type&lt;/th>
+&lt;th>description&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>stub_numeric_id&lt;/code>&lt;/td>
+&lt;td>required&lt;/td>
+&lt;td>int ($int64)&lt;/td>
+&lt;td>The specific stub numeric id&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;/blockquote>
+&lt;h5 id="responses-2">Responses&lt;/h5>
+&lt;blockquote>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>http code&lt;/th>
+&lt;th>content-type&lt;/th>
+&lt;th>response&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>200&lt;/code>&lt;/td>
+&lt;td>&lt;code>text/plain;charset=UTF-8&lt;/code>&lt;/td>
+&lt;td>YAML string&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>400&lt;/code>&lt;/td>
+&lt;td>&lt;code>application/json&lt;/code>&lt;/td>
+&lt;td>&lt;code>{&amp;quot;code&amp;quot;:&amp;quot;400&amp;quot;,&amp;quot;message&amp;quot;:&amp;quot;Bad Request&amp;quot;}&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;/blockquote>
+&lt;h5 id="example-curl-2">Example cURL&lt;/h5>
+&lt;blockquote>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-javascript" data-lang="javascript">&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">curl&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="nx">X&lt;/span> &lt;span class="nx">GET&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="nx">H&lt;/span> &lt;span class="s2">&amp;#34;Content-Type: application/json&amp;#34;&lt;/span> &lt;span class="nx">http&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="c1">//localhost:8889/0
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/blockquote>
+&lt;/details>
+&lt;details>
+&lt;summary>&lt;code>GET&lt;/code> &lt;code>&lt;b>/{uuid}&lt;/b>&lt;/code> &lt;code>(gets stub by its defined uuid property)&lt;/code>&lt;/summary>
+&lt;h5 id="parameters-3">Parameters&lt;/h5>
+&lt;blockquote>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>name&lt;/th>
+&lt;th>type&lt;/th>
+&lt;th>data type&lt;/th>
+&lt;th>description&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>uuid&lt;/code>&lt;/td>
+&lt;td>required&lt;/td>
+&lt;td>string&lt;/td>
+&lt;td>The specific stub unique idendifier&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;/blockquote>
+&lt;h5 id="responses-3">Responses&lt;/h5>
+&lt;blockquote>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>http code&lt;/th>
+&lt;th>content-type&lt;/th>
+&lt;th>response&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>200&lt;/code>&lt;/td>
+&lt;td>&lt;code>text/plain;charset=UTF-8&lt;/code>&lt;/td>
+&lt;td>YAML string&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>400&lt;/code>&lt;/td>
+&lt;td>&lt;code>application/json&lt;/code>&lt;/td>
+&lt;td>&lt;code>{&amp;quot;code&amp;quot;:&amp;quot;400&amp;quot;,&amp;quot;message&amp;quot;:&amp;quot;Bad Request&amp;quot;}&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;/blockquote>
+&lt;h5 id="example-curl-3">Example cURL&lt;/h5>
+&lt;blockquote>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-javascript" data-lang="javascript">&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">curl&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="nx">X&lt;/span> &lt;span class="nx">GET&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="nx">H&lt;/span> &lt;span class="s2">&amp;#34;Content-Type: application/json&amp;#34;&lt;/span> &lt;span class="nx">http&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="c1">//localhost:8889/some-unique-uuid-string
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/blockquote>
+&lt;/details>
+&lt;details>
+&lt;summary>&lt;code>GET&lt;/code> &lt;code>&lt;b>/proxy-config/default&lt;/b>&lt;/code> &lt;code>(gets &lt;b>default&lt;/b> proxy-config)&lt;/code>&lt;/summary>
+&lt;h5 id="parameters-4">Parameters&lt;/h5>
+&lt;blockquote>
+&lt;p>None&lt;/p>
+&lt;/blockquote>
+&lt;h5 id="responses-4">Responses&lt;/h5>
+&lt;blockquote>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>http code&lt;/th>
+&lt;th>content-type&lt;/th>
+&lt;th>response&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>200&lt;/code>&lt;/td>
+&lt;td>&lt;code>text/plain;charset=UTF-8&lt;/code>&lt;/td>
+&lt;td>YAML string&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>400&lt;/code>&lt;/td>
+&lt;td>&lt;code>application/json&lt;/code>&lt;/td>
+&lt;td>&lt;code>{&amp;quot;code&amp;quot;:&amp;quot;400&amp;quot;,&amp;quot;message&amp;quot;:&amp;quot;Bad Request&amp;quot;}&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;/blockquote>
+&lt;h5 id="example-curl-4">Example cURL&lt;/h5>
+&lt;blockquote>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-javascript" data-lang="javascript">&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">curl&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="nx">X&lt;/span> &lt;span class="nx">GET&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="nx">H&lt;/span> &lt;span class="s2">&amp;#34;Content-Type: application/json&amp;#34;&lt;/span> &lt;span class="nx">http&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="c1">//localhost:8889/proxy-config/default
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/blockquote>
+&lt;/details>
+&lt;details>
+&lt;summary>&lt;code>GET&lt;/code> &lt;code>&lt;b>/proxy-config/{uuid}&lt;/b>&lt;/code> &lt;code>(gets proxy config by its uuid property)&lt;/code>&lt;/summary>
+&lt;h5 id="parameters-5">Parameters&lt;/h5>
+&lt;blockquote>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>name&lt;/th>
+&lt;th>type&lt;/th>
+&lt;th>data type&lt;/th>
+&lt;th>description&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>uuid&lt;/code>&lt;/td>
+&lt;td>required&lt;/td>
+&lt;td>string&lt;/td>
+&lt;td>The specific proxy config unique idendifier&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;/blockquote>
+&lt;h5 id="responses-5">Responses&lt;/h5>
+&lt;blockquote>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>http code&lt;/th>
+&lt;th>content-type&lt;/th>
+&lt;th>response&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>200&lt;/code>&lt;/td>
+&lt;td>&lt;code>text/plain;charset=UTF-8&lt;/code>&lt;/td>
+&lt;td>YAML string&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>400&lt;/code>&lt;/td>
+&lt;td>&lt;code>application/json&lt;/code>&lt;/td>
+&lt;td>&lt;code>{&amp;quot;code&amp;quot;:&amp;quot;400&amp;quot;,&amp;quot;message&amp;quot;:&amp;quot;Bad Request&amp;quot;}&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;/blockquote>
+&lt;h5 id="example-curl-5">Example cURL&lt;/h5>
+&lt;blockquote>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-javascript" data-lang="javascript">&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">curl&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="nx">X&lt;/span> &lt;span class="nx">GET&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="nx">H&lt;/span> &lt;span class="s2">&amp;#34;Content-Type: application/json&amp;#34;&lt;/span> &lt;span class="nx">http&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="c1">//localhost:8889/proxy-config/some-unique-uuid-string
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/blockquote>
+&lt;/details>
+&lt;hr>
+&lt;h4 id="updating-existing-stubs--proxy-configs">Updating existing stubs &amp;amp; proxy configs&lt;/h4>
+&lt;details>
+&lt;summary>&lt;code>PUT&lt;/code> &lt;code>&lt;b>/{stub_numeric_id}&lt;/b>&lt;/code> &lt;code>(updates stub by its resource-id-{stub_numeric_id} in the config)&lt;/code>&lt;/summary>
+&lt;h5 id="parameters-6">Parameters&lt;/h5>
+&lt;blockquote>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>name&lt;/th>
+&lt;th>type&lt;/th>
+&lt;th>data type&lt;/th>
+&lt;th>description&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>stub_numeric_id&lt;/code>&lt;/td>
+&lt;td>required&lt;/td>
+&lt;td>int ($int64)&lt;/td>
+&lt;td>The specific stub numeric id&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;/blockquote>
+&lt;h5 id="responses-6">Responses&lt;/h5>
+&lt;blockquote>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>http code&lt;/th>
+&lt;th>content-type&lt;/th>
+&lt;th>response&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>201&lt;/code>&lt;/td>
+&lt;td>&lt;code>text/plain;charset=UTF-8&lt;/code>&lt;/td>
+&lt;td>&lt;code>Stub request index#&amp;lt;stub_numeric_id&amp;gt; updated successfully&amp;quot;&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>400&lt;/code>&lt;/td>
+&lt;td>&lt;code>application/json&lt;/code>&lt;/td>
+&lt;td>&lt;code>{&amp;quot;code&amp;quot;:&amp;quot;400&amp;quot;,&amp;quot;message&amp;quot;:&amp;quot;Bad Request&amp;quot;}&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>405&lt;/code>&lt;/td>
+&lt;td>&lt;code>text/html;charset=utf-8&lt;/code>&lt;/td>
+&lt;td>None&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;/blockquote>
+&lt;h5 id="example-curl-6">Example cURL&lt;/h5>
+&lt;blockquote>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-javascript" data-lang="javascript">&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">curl&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="nx">X&lt;/span> &lt;span class="nx">PUT&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="nx">H&lt;/span> &lt;span class="s2">&amp;#34;Content-Type: application/json&amp;#34;&lt;/span> &lt;span class="o">--&lt;/span>&lt;span class="nx">data&lt;/span> &lt;span class="err">@&lt;/span>&lt;span class="nx">put&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">json&lt;/span> &lt;span class="nx">http&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="c1">//localhost:8889/0
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/blockquote>
+&lt;/details>
+&lt;details>
+&lt;summary>&lt;code>PUT&lt;/code> &lt;code>&lt;b>/{uuid}&lt;/b>&lt;/code> &lt;code>(updates stub by its defined uuid property)&lt;/code>&lt;/summary>
+&lt;h5 id="parameters-7">Parameters&lt;/h5>
+&lt;blockquote>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>name&lt;/th>
+&lt;th>type&lt;/th>
+&lt;th>data type&lt;/th>
+&lt;th>description&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>uuid&lt;/code>&lt;/td>
+&lt;td>required&lt;/td>
+&lt;td>string&lt;/td>
+&lt;td>The specific stub unique idendifier&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;/blockquote>
+&lt;h5 id="responses-7">Responses&lt;/h5>
+&lt;blockquote>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>http code&lt;/th>
+&lt;th>content-type&lt;/th>
+&lt;th>response&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>201&lt;/code>&lt;/td>
+&lt;td>&lt;code>text/plain;charset=UTF-8&lt;/code>&lt;/td>
+&lt;td>&lt;code>Stub request uuid#&amp;lt;uuid&amp;gt; updated successfully&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>400&lt;/code>&lt;/td>
+&lt;td>&lt;code>application/json&lt;/code>&lt;/td>
+&lt;td>&lt;code>{&amp;quot;code&amp;quot;:&amp;quot;400&amp;quot;,&amp;quot;message&amp;quot;:&amp;quot;Bad Request&amp;quot;}&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>405&lt;/code>&lt;/td>
+&lt;td>&lt;code>text/html;charset=utf-8&lt;/code>&lt;/td>
+&lt;td>None&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;/blockquote>
+&lt;h5 id="example-curl-7">Example cURL&lt;/h5>
+&lt;blockquote>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-javascript" data-lang="javascript">&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">curl&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="nx">X&lt;/span> &lt;span class="nx">PUT&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="nx">H&lt;/span> &lt;span class="s2">&amp;#34;Content-Type: application/json&amp;#34;&lt;/span> &lt;span class="o">--&lt;/span>&lt;span class="nx">data&lt;/span> &lt;span class="err">@&lt;/span>&lt;span class="nx">put&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">json&lt;/span> &lt;span class="nx">http&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="c1">//localhost:8889/some-unique-uuid-string
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/blockquote>
+&lt;/details>
+&lt;details>
+&lt;summary>&lt;code>PUT&lt;/code> &lt;code>&lt;b>/proxy-config/default&lt;/b>&lt;/code> &lt;code>(updates &lt;b>default&lt;/b> proxy-config)&lt;/code>&lt;/summary>
+&lt;h5 id="parameters-8">Parameters&lt;/h5>
+&lt;blockquote>
+&lt;p>None&lt;/p>
+&lt;/blockquote>
+&lt;h5 id="responses-8">Responses&lt;/h5>
+&lt;blockquote>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>http code&lt;/th>
+&lt;th>content-type&lt;/th>
+&lt;th>response&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>201&lt;/code>&lt;/td>
+&lt;td>&lt;code>text/plain;charset=UTF-8&lt;/code>&lt;/td>
+&lt;td>&lt;code>Proxy config uuid#default updated successfully&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>400&lt;/code>&lt;/td>
+&lt;td>&lt;code>application/json&lt;/code>&lt;/td>
+&lt;td>&lt;code>{&amp;quot;code&amp;quot;:&amp;quot;400&amp;quot;,&amp;quot;message&amp;quot;:&amp;quot;Bad Request&amp;quot;}&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>405&lt;/code>&lt;/td>
+&lt;td>&lt;code>text/html;charset=utf-8&lt;/code>&lt;/td>
+&lt;td>None&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;/blockquote>
+&lt;h5 id="example-curl-8">Example cURL&lt;/h5>
+&lt;blockquote>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-javascript" data-lang="javascript">&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">curl&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="nx">X&lt;/span> &lt;span class="nx">PUT&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="nx">H&lt;/span> &lt;span class="s2">&amp;#34;Content-Type: application/json&amp;#34;&lt;/span> &lt;span class="o">--&lt;/span>&lt;span class="nx">data&lt;/span> &lt;span class="err">@&lt;/span>&lt;span class="nx">put&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">json&lt;/span> &lt;span class="nx">http&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="c1">//localhost:8889/proxy-config/default
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/blockquote>
+&lt;/details>
+&lt;details>
+&lt;summary>&lt;code>PUT&lt;/code> &lt;code>&lt;b>/proxy-config/{uuid}&lt;/b>&lt;/code> &lt;code>(updates proxy-config by its uuid property)&lt;/code>&lt;/summary>
+&lt;h5 id="parameters-9">Parameters&lt;/h5>
+&lt;blockquote>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>name&lt;/th>
+&lt;th>type&lt;/th>
+&lt;th>data type&lt;/th>
+&lt;th>description&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>uuid&lt;/code>&lt;/td>
+&lt;td>required&lt;/td>
+&lt;td>string&lt;/td>
+&lt;td>The specific proxy config unique idendifier&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;/blockquote>
+&lt;h5 id="responses-9">Responses&lt;/h5>
+&lt;blockquote>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>http code&lt;/th>
+&lt;th>content-type&lt;/th>
+&lt;th>response&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>201&lt;/code>&lt;/td>
+&lt;td>&lt;code>text/plain;charset=UTF-8&lt;/code>&lt;/td>
+&lt;td>&lt;code>Proxy config uuid#&amp;lt;uuid&amp;gt; updated successfully&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>400&lt;/code>&lt;/td>
+&lt;td>&lt;code>application/json&lt;/code>&lt;/td>
+&lt;td>&lt;code>{&amp;quot;code&amp;quot;:&amp;quot;400&amp;quot;,&amp;quot;message&amp;quot;:&amp;quot;Bad Request&amp;quot;}&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>405&lt;/code>&lt;/td>
+&lt;td>&lt;code>text/html;charset=utf-8&lt;/code>&lt;/td>
+&lt;td>None&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;/blockquote>
+&lt;h5 id="example-curl-9">Example cURL&lt;/h5>
+&lt;blockquote>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-javascript" data-lang="javascript">&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">curl&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="nx">X&lt;/span> &lt;span class="nx">PUT&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="nx">H&lt;/span> &lt;span class="s2">&amp;#34;Content-Type: application/json&amp;#34;&lt;/span> &lt;span class="o">--&lt;/span>&lt;span class="nx">data&lt;/span> &lt;span class="err">@&lt;/span>&lt;span class="nx">put&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">json&lt;/span> &lt;span class="nx">http&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="c1">//localhost:8889/proxy-config/some-unique-uuid-string
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/blockquote>
+&lt;/details>
+&lt;hr>
+&lt;h4 id="deleting-existing-stubs--proxy-configs">Deleting existing stubs &amp;amp; proxy configs&lt;/h4>
+&lt;details>
+&lt;summary>&lt;code>DELETE&lt;/code> &lt;code>&lt;b>/&lt;/b>&lt;/code> &lt;code>(deletes all in-memory stub &amp; proxy configs)&lt;/code>&lt;/summary>
+&lt;h5 id="parameters-10">Parameters&lt;/h5>
+&lt;blockquote>
+&lt;p>None&lt;/p>
+&lt;/blockquote>
+&lt;h5 id="responses-10">Responses&lt;/h5>
+&lt;blockquote>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>http code&lt;/th>
+&lt;th>content-type&lt;/th>
+&lt;th>response&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>200&lt;/code>&lt;/td>
+&lt;td>&lt;code>text/plain;charset=UTF-8&lt;/code>&lt;/td>
+&lt;td>&lt;code>All in-memory YAML config was deleted successfully&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;/blockquote>
+&lt;h5 id="example-curl-10">Example cURL&lt;/h5>
+&lt;blockquote>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-javascript" data-lang="javascript">&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">curl&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="nx">X&lt;/span> &lt;span class="nx">DELETE&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="nx">H&lt;/span> &lt;span class="s2">&amp;#34;Content-Type: application/json&amp;#34;&lt;/span> &lt;span class="nx">http&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="c1">//localhost:8889/
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/blockquote>
+&lt;/details>
+&lt;details>
+&lt;summary>&lt;code>DELETE&lt;/code> &lt;code>&lt;b>/{stub_numeric_id}&lt;/b>&lt;/code> &lt;code>(deletes stub by its resource-id-{stub_numeric_id} in the config)&lt;/code>&lt;/summary>
+&lt;h5 id="parameters-11">Parameters&lt;/h5>
+&lt;blockquote>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>name&lt;/th>
+&lt;th>type&lt;/th>
+&lt;th>data type&lt;/th>
+&lt;th>description&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>stub_numeric_id&lt;/code>&lt;/td>
+&lt;td>required&lt;/td>
+&lt;td>int ($int64)&lt;/td>
+&lt;td>The specific stub numeric id&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;/blockquote>
+&lt;h5 id="responses-11">Responses&lt;/h5>
+&lt;blockquote>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>http code&lt;/th>
+&lt;th>content-type&lt;/th>
+&lt;th>response&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>200&lt;/code>&lt;/td>
+&lt;td>&lt;code>text/plain;charset=UTF-8&lt;/code>&lt;/td>
+&lt;td>&lt;code>Stub request index#&amp;lt;stub_numeric_id&amp;gt; deleted successfully&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>400&lt;/code>&lt;/td>
+&lt;td>&lt;code>application/json&lt;/code>&lt;/td>
+&lt;td>&lt;code>{&amp;quot;code&amp;quot;:&amp;quot;400&amp;quot;,&amp;quot;message&amp;quot;:&amp;quot;Bad Request&amp;quot;}&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;/blockquote>
+&lt;h5 id="example-curl-11">Example cURL&lt;/h5>
+&lt;blockquote>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-javascript" data-lang="javascript">&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">curl&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="nx">X&lt;/span> &lt;span class="nx">DELETE&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="nx">H&lt;/span> &lt;span class="s2">&amp;#34;Content-Type: application/json&amp;#34;&lt;/span> &lt;span class="nx">http&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="c1">//localhost:8889/0
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/blockquote>
+&lt;/details>
+&lt;details>
+&lt;summary>&lt;code>DELETE&lt;/code> &lt;code>&lt;b>/{uuid}&lt;/b>&lt;/code> &lt;code>(updates stub by its defined uuid property)&lt;/code>&lt;/summary>
+&lt;h5 id="parameters-12">Parameters&lt;/h5>
+&lt;blockquote>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>name&lt;/th>
+&lt;th>type&lt;/th>
+&lt;th>data type&lt;/th>
+&lt;th>description&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>uuid&lt;/code>&lt;/td>
+&lt;td>required&lt;/td>
+&lt;td>string&lt;/td>
+&lt;td>The specific stub unique idendifier&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;/blockquote>
+&lt;h5 id="responses-12">Responses&lt;/h5>
+&lt;blockquote>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>http code&lt;/th>
+&lt;th>content-type&lt;/th>
+&lt;th>response&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>200&lt;/code>&lt;/td>
+&lt;td>&lt;code>text/plain;charset=UTF-8&lt;/code>&lt;/td>
+&lt;td>&lt;code>Stub request uuid#&amp;lt;uuid&amp;gt; deleted successfully&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>400&lt;/code>&lt;/td>
+&lt;td>&lt;code>application/json&lt;/code>&lt;/td>
+&lt;td>&lt;code>{&amp;quot;code&amp;quot;:&amp;quot;400&amp;quot;,&amp;quot;message&amp;quot;:&amp;quot;Bad Request&amp;quot;}&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;/blockquote>
+&lt;h5 id="example-curl-12">Example cURL&lt;/h5>
+&lt;blockquote>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-javascript" data-lang="javascript">&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">curl&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="nx">X&lt;/span> &lt;span class="nx">DELETE&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="nx">H&lt;/span> &lt;span class="s2">&amp;#34;Content-Type: application/json&amp;#34;&lt;/span> &lt;span class="nx">http&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="c1">//localhost:8889/some-unique-uuid-string
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/blockquote>
+&lt;/details>
+&lt;details>
+&lt;summary>&lt;code>DELETE&lt;/code> &lt;code>&lt;b>/proxy-config/{uuid}&lt;/b>&lt;/code> &lt;code>(deletes proxy-config by its uuid property)&lt;/code>&lt;/summary>
+&lt;h5 id="parameters-13">Parameters&lt;/h5>
+&lt;blockquote>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>name&lt;/th>
+&lt;th>type&lt;/th>
+&lt;th>data type&lt;/th>
+&lt;th>description&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>uuid&lt;/code>&lt;/td>
+&lt;td>required&lt;/td>
+&lt;td>string&lt;/td>
+&lt;td>The specific proxy config unique idendifier&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;/blockquote>
+&lt;h5 id="responses-13">Responses&lt;/h5>
+&lt;blockquote>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>http code&lt;/th>
+&lt;th>content-type&lt;/th>
+&lt;th>response&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>200&lt;/code>&lt;/td>
+&lt;td>&lt;code>text/plain;charset=UTF-8&lt;/code>&lt;/td>
+&lt;td>&lt;code>Proxy config uuid#&amp;lt;uuid&amp;gt; deleted successfully&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>400&lt;/code>&lt;/td>
+&lt;td>&lt;code>application/json&lt;/code>&lt;/td>
+&lt;td>&lt;code>{&amp;quot;code&amp;quot;:&amp;quot;400&amp;quot;,&amp;quot;message&amp;quot;:&amp;quot;Bad Request&amp;quot;}&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;/blockquote>
+&lt;h5 id="example-curl-13">Example cURL&lt;/h5>
+&lt;blockquote>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-javascript" data-lang="javascript">&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">curl&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="nx">X&lt;/span> &lt;span class="nx">DELETE&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="nx">H&lt;/span> &lt;span class="s2">&amp;#34;Content-Type: application/json&amp;#34;&lt;/span> &lt;span class="nx">http&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="c1">//localhost:8889/proxy-config/some-unique-uuid-string
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/blockquote>
+&lt;/details>
+&lt;hr></description></item><item><title>Social API</title><link>https://documents.starinc.xyz/docs/restapi/social/</link><pubDate>Mon, 01 Jan 0001 00:00:00 UTC</pubDate><author/><guid>https://documents.starinc.xyz/docs/restapi/social/</guid><description>&lt;p>&lt;a href="https://restapi.starinc.xyz/basic">https://restapi.starinc.xyz/basic&lt;/a>&lt;/p>
+&lt;p>time/clock
+network/ip
+network/ip/geo&lt;/p></description></item></channel></rss>

@@ -13,6 +13,7 @@
  * https://github.com/poole/poole.
  */
 
+
 /*
  * Contents
  *
@@ -22,9 +23,11 @@
  * Container
  * Masthead
  * Posts and pages
+ * Pagination
  * Reverse layout
  * Themes
  */
+
 
 /*
  * Body resets
@@ -34,8 +37,8 @@
 
 * {
   -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 html,
@@ -49,7 +52,7 @@ html {
   font-size: 16px;
   line-height: 1.5;
 }
-@media (min-width: 38rem) {
+@media (min-width: 38em) {
   html {
     font-size: 20px;
   }
@@ -59,13 +62,16 @@ body {
   color: #515151;
   background-color: #fff;
   -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
 }
 
 /* No `:visited` state is required by default (browsers will use `a`) */
 a {
   color: #268bd2;
   text-decoration: none;
+}
+a strong {
+  color: inherit;
 }
 /* `:focus` is linked to `:hover` for basic accessibility */
 a:hover,
@@ -74,13 +80,8 @@ a:focus {
 }
 
 /* Headings */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin-bottom: 0.5rem;
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: .5rem;
   font-weight: bold;
   line-height: 1.25;
   color: #313131;
@@ -97,11 +98,7 @@ h3 {
   margin-top: 1.5rem;
   font-size: 1.25rem;
 }
-h4,
-h5,
-h6 {
-  font-family: "ff-meta-web-pro", "Helvetica Neue", "Helvetica", Arial,
-    sans-serif;
+h4, h5, h6 {
   margin-top: 1rem;
   font-size: 1rem;
 }
@@ -116,21 +113,18 @@ strong {
   color: #303030;
 }
 
+
 /* Lists */
-ul,
-ol,
-dl {
+ul, ol, dl {
   margin-top: 0;
-  padding-left: 0;
   margin-bottom: 1rem;
-  list-style-type: none;
 }
 
 dt {
   font-weight: bold;
 }
 dd {
-  margin-bottom: 0.5rem;
+  margin-bottom: .5rem;
 }
 
 /* Misc */
@@ -153,15 +147,13 @@ abbr[title] {
   border-bottom: 1px dotted #e5e5e5;
 }
 
-mono,
-tt,
+/* Code */
 code,
 pre {
-  font-family: PragmataPro, Menlo, Monaco, "Andale Mono", "Lucida Console",
-    "Courier New", monospace;
+  font-family: Menlo, Monaco, "Courier New", monospace;
 }
 code {
-  padding: 0.25em 0.5em;
+  padding: .25em .5em;
   font-size: 85%;
   color: #bf616a;
   background-color: #f9f9f9;
@@ -172,10 +164,12 @@ pre {
   margin-top: 0;
   margin-bottom: 1rem;
   padding: 1rem;
-  font-size: 0.8rem;
+  font-size: .8rem;
   line-height: 1.4;
   white-space: pre;
-  overflow: auto;
+  white-space: pre-wrap;
+  word-break: break-all;
+  word-wrap: break-word;
   background-color: #f9f9f9;
 }
 pre code {
@@ -184,6 +178,8 @@ pre code {
   color: inherit;
   background-color: transparent;
 }
+
+/* Pygments via Jekyll */
 .highlight {
   margin-bottom: 1rem;
   border-radius: 4px;
@@ -192,17 +188,39 @@ pre code {
   margin-bottom: 0;
 }
 
+/* Gist via GitHub Pages */
+.gist .gist-file {
+  font-family: Menlo, Monaco, "Courier New", monospace !important;
+}
+.gist .markdown-body {
+  padding: 15px;
+}
+.gist pre {
+  padding: 0;
+  background-color: transparent;
+}
+.gist .gist-file .gist-data {
+  font-size: .8rem !important;
+  line-height: 1.4;
+}
+.gist code {
+  padding: 0;
+  color: inherit;
+  background-color: transparent;
+  border-radius: 0;
+}
+
 /* Quotes */
 blockquote {
-  padding: 0.5rem 1rem;
-  margin: 0.8rem 0;
+  padding: .5rem 1rem;
+  margin: .8rem 0;
   color: #7a7a7a;
-  border-left: 0.25rem solid #e5e5e5;
+  border-left: .25rem solid #e5e5e5;
 }
 blockquote p:last-child {
   margin-bottom: 0;
 }
-@media (min-width: 30rem) {
+@media (min-width: 30em) {
   blockquote {
     padding-right: 5rem;
     padding-left: 1.25rem;
@@ -211,53 +229,28 @@ blockquote p:last-child {
 
 img {
   display: block;
+  max-width: 100%;
   margin: 0 0 1rem;
   border-radius: 5px;
-  height: auto;
-  width: 100%;
-}
-
-.fpimg {
-  padding-bottom: 2rem;
-}
-
-.lbg {
-  display: inline;
-  width: auto;
-  padding-left: 1rem;
-}
-
-.right {
-  float: right;
-  margin-left: 1rem;
-}
-
-.left {
-  float: left;
-  margin-right: 1rem;
-}
-
-.center {
-  float: center;
 }
 
 /* Tables */
 table {
   margin-bottom: 1rem;
   width: 100%;
-  border-top: 1px solid #e5e5e5;
-  border-bottom: 1px solid #e5e5e5;
+  border: 1px solid #e5e5e5;
   border-collapse: collapse;
 }
 td,
 th {
-  padding: 0.25rem 0.5rem;
-  /* border: 1px solid #e5e5e5; */
+  padding: .25rem .5rem;
+  border: 1px solid #e5e5e5;
 }
 tbody tr:nth-child(odd) td,
 tbody tr:nth-child(odd) th {
   background-color: #f9f9f9;
 }
+
 
 /*
  * Custom type
@@ -270,55 +263,6 @@ tbody tr:nth-child(odd) th {
   font-weight: 300;
 }
 
-.front {
-  margin-bottom: 500px;
-}
-
-.credit {
-  padding-top: 3rem;
-  font-size: small;
-}
-
-ul.category {
-  text-transform: capitalize;
-}
-ul.category li {
-  margin-bottom: 1rem;
-}
-
-ul.catlist {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-ul.catlist li {
-  display: inline;
-}
-ul.catlist li:after {
-  content: "・";
-}
-ul.catlist li:last-child:after {
-  content: "";
-}
-
-/* This gets Google to fall into place */
-.social {
-  font-size: 1px;
-  padding-bottom: 2rem;
-  padding-top: 0;
-}
-
-/* From https://gist.github.com/thebigreason/1296097 */
-/* This gets Facebook to fall into place */
-.social iframe {
-  vertical-align: bottom;
-}
-
-/* Set an optional width for your button wrappers */
-.social span {
-  display: inline-block;
-  width: 110px;
-}
 
 /*
  * Messages
@@ -334,6 +278,7 @@ ul.catlist li:last-child:after {
   background-color: #f9f9f9;
 }
 
+
 /*
  * Container
  *
@@ -342,11 +287,12 @@ ul.catlist li:last-child:after {
 
 .container {
   max-width: 38rem;
-  padding-left: 1rem;
+  padding-left:  1rem;
   padding-right: 1rem;
-  margin-left: auto;
+  margin-left:  auto;
   margin-right: auto;
 }
+
 
 /*
  * Masthead
@@ -355,7 +301,7 @@ ul.catlist li:last-child:after {
  */
 
 .masthead {
-  padding-top: 1rem;
+  padding-top:    1rem;
   padding-bottom: 1rem;
   margin-bottom: 3rem;
 }
@@ -373,6 +319,7 @@ ul.catlist li:last-child:after {
   color: #c0c0c0;
   letter-spacing: 0;
 }
+
 
 /*
  * Posts and pages
@@ -400,14 +347,84 @@ ul.catlist li:last-child:after {
 /* Meta data line below post title */
 .post-date {
   display: block;
-  margin-top: -0.5rem;
+  margin-top: -.5rem;
   margin-bottom: 1rem;
   color: #9a9a9a;
 }
 
-/* Archive list */
-
-.archive h3 {
+/* Related posts */
+.related {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  border-top: 1px solid #eee;
+}
+.related-posts {
+  padding-left: 0;
+  list-style: none;
+}
+.related-posts h3 {
   margin-top: 0;
-  padding-bottom: 0;
+}
+.related-posts li small {
+  font-size: 75%;
+  color: #999;
+}
+.related-posts li a:hover {
+  color: #268bd2;
+  text-decoration: none;
+}
+.related-posts li a:hover small {
+  color: inherit;
+}
+
+
+/*
+ * Pagination
+ *
+ * Super lightweight (HTML-wise) blog pagination. `span`s are provide for when
+ * there are no more previous or next posts to show.
+ */
+
+.pagination {
+  overflow: hidden; /* clearfix */
+  margin-left: -1rem;
+  margin-right: -1rem;
+  font-family: "PT Sans", Helvetica, Arial, sans-serif;
+  color: #ccc;
+  text-align: center;
+}
+
+/* Pagination items can be `span`s or `a`s */
+.pagination-item {
+  display: block;
+  padding: 1rem;
+  border: 1px solid #eee;
+}
+.pagination-item:first-child {
+  margin-bottom: -1px;
+}
+
+/* Only provide a hover state for linked pagination items */
+a.pagination-item:hover {
+  background-color: #f5f5f5;
+}
+
+@media (min-width: 30em) {
+  .pagination {
+    margin: 3rem 0;
+  }
+  .pagination-item {
+    float: left;
+    width: 50%;
+  }
+  .pagination-item:first-child {
+    margin-bottom: 0;
+    border-top-left-radius:    4px;
+    border-bottom-left-radius: 4px;
+  }
+  .pagination-item:last-child {
+    margin-left: -1px;
+    border-top-right-radius:    4px;
+    border-bottom-right-radius: 4px;
+  }
 }
