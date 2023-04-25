@@ -1,10 +1,9 @@
-name: deploy
+name: Deploy
 
 on:
   push:
     branches:
-      - master
-  pull_request:
+      - main
 
 jobs:
   deploy:
@@ -12,7 +11,8 @@ jobs:
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
         with:
           submodules: true
           fetch-depth: 0
@@ -20,7 +20,7 @@ jobs:
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
-          hugo-version: '0.96.0'
+          hugo-version: '0.110.0'
           extended: true
 
       - name: Build
