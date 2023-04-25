@@ -1,0 +1,34 @@
+baseurl = "https://documents.starinc.xyz/"
+contentdir = "content"
+layoutdir = "layouts"
+publishdir = "public"
+title = "Public Documentation"
+canonifyurls = true
+
+docs = ":title/"
+
+defaultContentLanguage = "en"
+theme = "Lanyon"
+metaDataFormat = "yaml"
+pygmentsUseClasses = true
+pygmentCodeFences = true
+
+[markup.goldmark.extensions]
+typographer = true
+
+[markup.goldmark.renderer]
+unsafe = true
+
+[params]
+title = "Star Inc. OSS Documentation"
+description = "OSS Docs"
+tagline = "The documentation for developers."
+mainSections = ["docs"]
+disableFonts = false
+
+[author]
+name = "OSS Zone"
+url = "https://opensource.starinc.xyz"
+github = "star-inc"
+copyright = "(c) 2023 Star Inc."
+copyright_url = "https://starinc.xyz"

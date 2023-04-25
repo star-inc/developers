@@ -1,28 +1,42 @@
-<!--
-  This file defines the main sidebar that the user can toggle in and out of
-  view. This is included in every file.
-
-  Most of this was taken directly from the Lanyon example site.
-
-  Here we simply include a link to the homepage, a link to the blog posts,
-  and some copyright information.
--->
-
 <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
      styles, `#sidebar-checkbox` for behavior. -->
-<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox" />
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
 
 <!-- Toggleable sidebar -->
 <div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <p>
+      {{- with .Site.Params.description }}
+      {{ . | markdownify }}
+      {{- end }}
+    </p>
+  </div>
+
   <nav class="sidebar-nav">
-    <a class="sidebar-nav-item" href="/">Home</a>
-    <a class="sidebar-nav-item" href="/posts">Blog</a>
+    <a class="sidebar-nav-item {{ if .IsHome }} active {{ end }}" href="/">Home</a>
+    <a class="sidebar-nav-item {{ if eq .RelPermalink " /docs/" }} active {{ end }}" href="/docs">Docs</a>
+    {{- $currentPage := . }}
+    {{- range .Site.Menus.main -}}
+    <a class="sidebar-nav-item{{if or ($currentPage.IsMenuCurrent " main" .) ($currentPage.HasMenuCurrent "main" .) }}
+      active{{end}}" href="{{ .URL }}" title="{{ .Title }}">{{ .Name }}</a>
+    {{- end -}}
+
+    {{- $thisperma := .Permalink }}
+    {{ range .Site.Pages.ByWeight -}}
+    {{ if isset .Params "sidebar" -}}
+    <a class="sidebar-nav-item {{ if eq .Permalink $thisperma }} active {{ end }}" href="{{ .Permalink }}">{{ .Title
+      }}</a>
+    {{ end -}}
+    {{ end -}}
+
+    {{- with .Site.Params.Github }}
+    <a class="sidebar-nav-item" href="{{ .url }}/archive/{{ .head }}.zip">Download</a>
+    <a class="sidebar-nav-item" href="{{ .url }}">GitHub project</a>
+    <span class="sidebar-nav-item">Currently on {{ .head }}</span>
+    {{ end -}}
   </nav>
 
   <div class="sidebar-item">
-    <p>
-      &copy; 2014 Spencer Lyon. Powered by <a href="https://gohugo.io">Hugo</a>.
-      Design adapted from <a href="http://lanyon.getpoole.com">Lanyon</a>.
-    </p>
+    <p>&copy; {{ .Site.LastChange.Year }}. All rights reserved.</p>
   </div>
 </div>

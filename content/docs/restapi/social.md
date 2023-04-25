@@ -1,9 +1,8 @@
 ---
-title: Basic API
+title: Social API
 subtitle: Public Resource RESTful API
 comments: false
 ---
-
 https://restapi.starinc.xyz/basic
 
 time/clock
